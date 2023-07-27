@@ -1,0 +1,568 @@
+// width: 1600px-1920px
+@media screen and (max-width: $maxWidth){
+    // section Offer
+    .offer{
+        &__image{
+            position: relative;
+        }
+    }
+    // section About
+    .about{
+        &__image{
+            position: relative;
+        }
+    }
+    // section Contacts
+    .contacts{
+        &__image{
+            position: relative;
+        }
+    }
+}
+// width: 991px - 1280px
+@media screen and (max-width: $md){
+    // section Offer
+    .offer{
+        &__image{
+            position: relative;
+        }
+    }
+    // section About
+    .about{
+        &__body{
+            align-items: center;
+        }
+        &__image{
+            position: relative;
+        }
+        &__content{
+            padding: 100px 40px;
+        }
+    }
+    // section Advantages
+    .advantages{
+        &__title{
+            text-align: center;
+        }
+        &__cards{
+            justify-content: center;
+        }
+        &__card{
+            &:not(:last-child){
+                margin-bottom: 100px;
+            }
+        }
+    }
+    // section Rules
+    .rules{
+        &__column{
+            padding: 0 10px;
+            flex: 0 0 33.333%;
+        }
+        .block{
+            align-items: center;
+            text-align: center;
+        }
+        .block__items{
+            align-items: center;
+        }
+        .block__img{
+            width: 100%;
+        }
+        .info{
+            flex-direction: column;
+            padding: 0;
+            text-align: center;
+            align-items: center;
+        }
+        .info__img{
+            height: 89px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+        .info__items{
+            align-items: center;
+        }
+    }
+    // section Servises
+    .servises{
+        &__slide{
+            min-height: 390px;
+        }
+    }
+    // section Contacts
+    .contacts{
+        &__image{
+            position: relative;
+            top: 0;
+        }
+    }
+}
+
+
+// width: 767px - 990px
+@media screen and (max-width: $md1){
+    // section Offer
+    .offer{
+        &__block{
+            flex-direction: column;
+        }
+        &__content{
+            padding-right: 50px;
+        }
+        &__title{
+            text-align: center;
+            &::after{
+                bottom: -85px;
+            }
+        }
+        &__paragraph {
+            width: 100%;
+            text-align: center;
+        }
+    }
+    // section About
+    .about{
+        &__body{
+            flex-direction: column-reverse;
+        }
+        &__title{
+            text-align: center;
+        }
+    }
+    // section Rules
+    .rules{
+        .block{
+            padding: 0 10px 25px;
+            
+        }
+        .block__items{
+            align-items: center;
+        }
+        .block__term{
+            @include fonts(20px, 700);
+        }
+        .block__term p{
+            font-style: 18px;
+        }
+        .title-small{
+            padding-bottom: 26px;
+        }
+    }
+    // section Contacts
+    .contacts{
+        &__body{
+            flex-direction: column;
+        }
+        &__content{
+            margin: 0 auto;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+        &__title,
+        &__sub-title{
+            text-align: center;
+        }
+    }
+}
+
+
+// width: 561px - 766px
+@media screen and (max-width: $md2){
+    .header{
+        &__row{
+            justify-content: space-between;
+        }
+        .nav__items{
+            position: fixed;
+            overflow: auto;
+            top: 100px;
+            left: -100%;
+            width: 100%;
+            height: auto;
+            background:#fff;
+            padding: 40px 30px ;
+            transition: left 0.3s ease;
+            justify-content: center;
+        }
+        .nav__items.active{
+            left: 0;
+        }
+        .nav__item:not(:last-child){
+            margin-bottom: 20px;
+        }
+        &__burger{
+            display: block;
+            position: relative;
+            width: 25px;
+            height: 15px;
+            z-index: 1000;
+            cursor: pointer;
+        }
+        &__burger span,
+        &__burger::before,
+        &__burger::after {
+            left: 0;
+            position: absolute;
+            height: 10%;
+            width: 100%;
+            transition: all 0.3s ease 0s;
+            background: $bg;
+        }
+        &__burger::before,
+        &__burger::after {
+            content: "";
+        }
+        &__burger::before {
+            top: 0;
+        }
+        &__burger::after {
+            bottom: 0;
+        }
+        &__burger span {
+            top: 50%;
+            transform: scale(1) translate(0px, -80%);
+        }
+        &__burger.active span {
+            transform: scale(0) translate(0px, -80%);
+        }
+        &__burger.active::before {
+            top: 50%;
+            transform: rotate(-50deg) translate(0px, -80%);
+        }
+        &__burger.active::after {
+            bottom: 50%;
+            transform: rotate(50deg) translate(0px, 80%);
+        }
+    }
+    // section Offer
+    .offer{
+        &__content{
+            padding-right: 0;
+        }
+        &__title{
+            &::after{
+                display: none;
+            }
+        }
+    }
+    // section Advantages
+    .advantages{
+        .card__title{
+            text-align: center;
+        }
+        .card.active{
+            .card__front {
+                transform: rotateY(180deg);
+                }
+        .card__back {
+            transform: rotateY(0deg);
+            z-index: 3;
+            }
+        }
+    }
+    // section Rules
+    .rules{
+       &__row{
+        flex-direction: column;
+        align-items: center;
+        &:not(:last-child) {
+            margin-bottom: 65px;
+            }
+       }
+       &__column{
+        &:not(:last-child){
+            margin-bottom: 90px;
+            }
+       }
+    }
+    // section Contacts
+    .contacts{
+        &__body{
+            display: block;
+        }
+        &__content{
+            width: 100%;
+        }
+        &__sub-title{
+            width: 100%;
+        }
+    }
+}
+
+// width: 320px - 560px
+@media screen and (max-width: $md3){
+    // Header
+    .header{
+        padding: 16px 0;
+        .nav__items{
+            flex-direction: column;
+            padding: 50px 30px;
+        }
+    }
+    // section Offer
+    .offer{
+        &__row{
+            margin-bottom: 30px;
+        }
+        &__title{
+            font-size: 50px;
+            text-align: start;
+        }
+        &__paragraph{
+            text-align: start;
+            font-size: 15px;
+        }
+        &__photo{
+            width: 100%;
+            border-radius: 10px;
+        }
+        &__content{
+            padding: 38px 0 32px;
+        }
+        &__block{
+            padding-bottom: 46px;
+        }
+        &__block-message{
+            right: -100%px;
+        }
+        .form-top{
+            width: 100%;
+        }
+        .form-top__btn{
+            background-color: $bg3;
+            width: 44px;
+            height: 44px;
+        }
+        .form-top__email{
+            padding: 0 20px;
+            min-width: 239px;
+            min-height: 44px;
+        }
+        .message{
+            justify-content: space-between;
+        }
+        .message__block{
+            flex-direction: column;
+        }
+        .message__image{
+            margin-bottom: 8px;
+        }
+        .message__info{
+            margin-right: 70px;
+        }
+        .message.active{
+            right: 5px;
+        @keyframes modal-open {
+                0% {
+                    right: -100%;
+                }
+                20% {
+                    right: 5px;
+                }
+                50% {
+                    right: 5px;
+                }
+                80% {
+                    right: 5px;
+                }
+                100% {
+                    right: -100%;
+                }
+            }        
+        }
+    }
+    // section About
+    .about{
+        &__content{
+            padding: 44px 5px 32px;
+        }
+        &__title{
+            text-align: start;
+            font-size: 36px;
+        }
+        &__text{
+            text-align: start;
+        }
+        &__photo{
+            width: 100%;
+            border-radius: 10px;
+        }
+        &__image{
+            padding-bottom: 44px;
+        }
+    }
+    // section Advantages
+    .advantages{
+        &__body{
+            padding: 44px 0;
+        }
+        &__card{
+            min-width: 100%;
+            height: 270px;
+            &:not(:last-child){
+                margin-bottom: 150px;
+            }
+        }
+        &__title{
+            margin-bottom: 102px;
+            text-align: start;
+            font-size: 36px;
+        }
+        .card__front {
+            padding: 17px 20px 30px;
+        }
+        .card__title{
+            margin-top: 10px;
+        }
+        .card__back{
+            padding: 20px;
+        }
+        .card__title-back{
+            font-size: 14px;
+        }
+    }
+    // Section Rules
+    .rules{
+        &__body{
+            padding: 44px 0;
+        }
+        &__title{
+            text-align: start;
+            font-size: 36px;
+        }
+        .block{
+            align-items: start;
+        }
+        .block__items{
+            align-items: start;
+        }
+        .block__title{
+            margin: 24px 0;
+        }
+        .block__price{
+            font-size: 32px;
+        }
+        .block__term{
+            font-size: 28px;
+        }
+        .info{
+            padding: 20px;
+            flex-direction: row;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+        .info__items{
+            text-align: start;
+            align-items: start;
+        }
+        .info__img{
+            margin: 0;
+            margin-right: 16px;
+            height: 80px;
+        }
+        .info__text{
+            font-size: 28px;
+        }
+        .title-small{
+            padding-bottom: 0;
+        }
+    }
+    // Servises
+    .servises{
+        &__body{
+            padding: 44px 0;
+        }
+        &__title{
+            text-align: start;
+            font-size: 36px;
+        }
+        &__slide {
+            min-height: 322px;
+        }
+    }
+    // section Contacts
+    .contacts{
+        &__body{
+            padding: 44px 0;
+        }
+        &__title {
+            text-align: start;
+            font-size: 36px;
+        }
+        &__sub-title{
+            text-align: start;
+        }
+        .form__btn{
+            background: $bg3;
+            margin-bottom: 32px;
+        }
+        &__image{
+            display: block;
+        }
+        &__photo{
+            width: 100%;
+            border-radius: 25px;
+        }
+        .message {
+            justify-content: space-between;
+        }
+
+        .message__block {
+            flex-direction: column;
+        }
+
+        .message__image {
+            margin-bottom: 8px;
+        }
+
+        .message__info {
+            margin-right: 110px;
+        }
+        .message.active {
+            right: 5px;
+
+        @keyframes modal-open {
+                0% {
+                    right: -100%;
+                }
+                20% {
+                    right: 5px;
+                }
+                50% {
+                    right: 5px;
+                }
+                80% {
+                    right: 5px;
+                }
+                100% {
+                    right: -100%;
+                }
+            }        
+        }
+        .form__name{
+            &:not(:last-child){
+                padding-right: 5px;
+            }
+        }
+    }
+    // Footer
+    .footer{
+        &__body{
+            padding: 44px 0 32px;
+        }
+        .nav__items{
+            flex-direction: column;
+            text-align: center;
+        }
+        .nav__item{
+            &:not(:last-child){
+                padding-bottom: 30px;
+            }
+        }
+        &__nav{
+            margin-bottom: 24px;
+        }
+    }
+
+}

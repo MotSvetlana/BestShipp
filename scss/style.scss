@@ -1,0 +1,844 @@
+@import "_reboot";
+
+// Variable
+$maxWidth: 2560px;
+$maxWidthContainer: 1280px;
+
+$md: $maxWidthContainer+12px;
+$md1: 991px;
+$md2: 767px;
+$md3: 560px;
+
+
+$bg: #2A64F6;
+$bg1: #1E3A73;
+$bg2: #4A608E;
+$bg3:#5AC197;
+
+// Mixin
+@mixin fonts($fz, $fw) {
+    font-size: $fz;
+    font-weight: $fw;
+}
+// 
+body{
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 141%;
+    color: $bg2;
+    @media(max-width: $md3) {
+        font-size: 15px;
+    }
+}
+body.lock{
+    overflow: hidden;
+}
+h1{
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 107%;
+    color: $bg1;
+    @media(max-width: $md){
+        @include fonts(40px,700);
+    }
+}
+h4{
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 108%;
+    color: $bg1;
+    @media(max-width: $md3) {
+           font-size: 20px;
+        }
+}
+[class*="__container"]{
+    max-width: 1280px;
+    padding: 0 24px;
+    margin: 0 auto;
+    @media(max-width:$maxWidth) {
+            max-width: 1440px;
+        }
+    @media(max-width:$md) {
+        max-width: 991px;
+    }
+    
+    @media(max-width:$md1) {
+        max-width: 768px;
+    }
+
+    @media(max-width:$md2) {
+        max-width: 561px;
+    }
+
+    @media(max-width: $md3) {
+        // max-width: 375px;
+        padding: 0 12px;
+    }
+}
+.wrapper {
+    min-height: 100%;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+}
+.main {
+    flex: 1 1 auto;
+}
+// section Header ------------------------------------------------------------------------------------------------
+.header {
+    padding: 33px 0 33px;
+    transition: all 0.4s ease 0s;
+    width: 100%;
+    z-index: 50;
+    &__row {
+        display: flex;
+        align-items: center;
+    }
+    &__logo {
+        display: flex;
+        flex-direction: column;
+        margin-right: 24px;
+    }
+    &__img {
+        background: url('../img/header/logo_blue.svg') no-repeat top center/contain;
+        width: 60px;
+        height: 32px;
+        margin: 0 auto;
+        margin-bottom: 6px;
+    }
+    &__logo-name {
+        color: $bg;
+        @include fonts(17px,800);
+        line-height: 118%;
+    }
+    &__burger{
+        display: none;
+    }
+}
+.header.active{
+    position: fixed;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 23px 0;
+}
+.nav {
+    &__items {
+        display: flex;
+    }
+    &__item {
+        &:not(:last-child) {
+        margin-right: 16px;
+        }
+    }
+    &__link {
+        color: inherit;
+        @include fonts(17px,600);
+        line-height: 118%;
+    }
+    &__link.active {
+        color: #1E3A73;
+    }
+}
+
+// section Offer  ---------------------------------------------------------------------------------------------------
+.offer {
+    position: relative;
+    &__block{
+        display: flex;
+        padding-bottom: 32px;
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 50%;
+        padding: 48px 108px 66px 0;
+    }
+    &__body {
+        margin-bottom: 32px;
+    }
+    &__row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+    &__icon {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    &__img {
+        &:not(:first-child){
+            margin-left: -12px;
+        }
+    }
+    &__text {
+        margin-left: 8px;
+        @include fonts(14px,400);
+        line-height: 121%;
+    }
+    &__text span{
+        @include fonts(14px, 600);
+    }
+    &__title {
+        color: $bg;
+        font-size: 60px;
+        margin-bottom: 16px;
+        position: relative;
+        &::before{
+            content: '';
+            position: absolute;
+            left: -100px;
+            top: 80px;
+            width: 436px;
+            height: 50px;
+            background: rgba(255, 42, 31, 0.3);
+            filter: blur(100px);
+            transform: rotate(10.24deg);
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            background: url('../img/offer/arrow.png') no-repeat center center;
+            width: 160px;
+            height: 111px;
+            bottom: -95px;
+            right: -85px;
+            transform: rotate(-20deg);
+        }
+    }
+    &__paragraph {
+        line-height: 153%;
+        letter-spacing: 0.0015em;
+        width: 426px;
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+        width: 479px;
+        flex-wrap: wrap;
+    }
+    &__image {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    &__photo{
+        border-radius: 50px 0px 0px 50px;
+    }
+}
+.form-top{
+    position: relative;
+    &__input{
+        display: flex;
+    }
+    &__email {
+        flex: 1 1 auto;
+        min-height: 56px;
+        padding: 0 24px;
+        background: #F3F4F6;
+        border-radius: 2000px;
+        color: rgba(74, 96, 142, 0.8);
+        margin-right: 8px;
+        &:focus{
+            color: rgba(74, 96, 142, 1);
+        }
+    }
+    &__btn {
+        border-radius: 50%;
+        display: flex;
+        width: 56px;
+        background: $bg3 url('../img/offer/right_arrow.svg') no-repeat center center;
+        transition: all 0.5s ease;
+        &:hover{
+            background: $bg2 url('../img/offer/right_arrow.svg') no-repeat center center ;
+        }
+    }
+    &__error-message {
+        display: none;
+    }
+    &__error-message.active{
+        display: block;
+    }
+}
+.form-top__email.mobil-screen{
+    display: none;
+}
+.form-top__email.error {
+    box-shadow: 0 0 5px red;
+}
+.error-message{
+    color: red;
+    @include fonts(12px,400);
+    line-height: 133.3%;
+    padding-top: 10px;
+}
+.form-top .error-message  {
+    position: relative;
+    padding-left: 35px;
+    &::before {
+        content: '!';
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50px;
+        text-align: center;
+        align-items: center;
+        border: 1.33333px solid #F04438;
+        }
+}
+.message {
+    position: fixed;
+    overflow: auto;
+    top: 24px;
+    right: -100%;
+    cursor: pointer;
+    display: flex;
+    align-items: start;
+    padding: 16px;
+    background: #FFFFFF;
+    border: 1px solid #F2F4F7;
+    box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.08), 0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+    border-radius: 12px;
+    &__block{
+        display: flex;
+    }
+    &__close{
+        background: url('../img/offer/close.png') no-repeat center center;
+        width: 20px;
+        height: 20px;
+    }
+    &__image {
+        margin-right: 20px;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        margin-right: 20px;
+    }
+
+    &__title {
+        color: #101828;
+        @include fonts(15px, 600);
+        line-height: 133.3%;
+    }
+
+    &__text {
+        @include fonts(15px, 400);
+        line-height: 133.3%;
+    }
+}
+.message.active {
+    display: flex;
+    z-index: 100;
+    right: 24px;
+    animation-name:  modal-open;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode:forwards;
+
+    @keyframes modal-open {
+        0% {
+            right: -100%;
+        }
+        20%{
+            right: 24px;
+            
+        }
+        50%{
+            right: 24px;
+        }
+        80%{
+            right: 24px;
+        }
+        100%{
+            right: -100%;
+        }
+    }
+}
+
+// section About ------------------------------------------------------------------------------------
+.about {
+    background: #F8F9FC;
+    position: relative;
+    &__body {
+        display: flex;
+        justify-content: flex-end;
+    }
+    &__image {
+        position: absolute;
+        left: 0;
+    }
+    &__photo {
+        border-radius: 0px 50px 50px 0px;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        padding: 124px 80px 124px 64px;
+        flex: 0 0 50%;
+    }
+    &__title {
+        margin-bottom: 16px;
+    }
+    &__text {
+        letter-spacing: 0.0015em;
+    }
+}
+
+// section Advantages ---------------------------------------------------------------------------------
+.advantages {
+    &__body {
+        padding: 80px 0;
+    }
+    &__title {
+        margin-bottom: 126px;
+    }
+    &__cards {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    &__card {
+        text-align: center;
+        min-width: 394px;
+        height: 238px;
+    }
+    &__card img{
+        max-width: 100%;
+    }
+}
+.card {
+    cursor: pointer;
+    position: relative;
+    &__front{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #F8F9FC;
+        border-radius: 40px;
+        padding: 17px 32px 30px;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        transition: 0.9s ease-in-out;
+    }
+
+    &__icon {
+        position: absolute;
+        top: -20px;
+        right: 0;
+        background: $bg3 url('../img/advantages/help_circle.png') no-repeat center center;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+    }
+    &__img {
+        object-fit: contain;
+        margin-top: -86px;
+    }
+    &__title {
+        text-align: start;
+        margin-top: 32px;
+    }
+    &__back {
+        background: #F8F9FC;
+        border-radius: 40px;
+        padding: 30px 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: rotateY(180deg);
+        -webkit-backface-visibility: hidden;
+        transition: 0.9s ease-in-out;
+        backface-visibility: hidden;
+        z-index: 1;
+    }
+    &__close {
+        position: absolute;
+        top: -20px;
+        right: 0;
+        background: $bg3 url('../img/advantages/x_circle.png') no-repeat center center;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+    }
+    &__title-back{
+        text-align: center;
+    }
+    &__text {
+        @include fonts(16px,400);
+        line-height: 150%;
+        margin-top: 8px;
+        text-align: start
+    }
+}
+
+
+// section Rules -------------------------------------------------------------------------------------------------------
+.rules {
+    &__body {
+        padding: 80px 0 91px;
+        position: relative;
+        &::before{
+            content: '';
+            position: absolute;
+            width: 343.39px;
+            height: 58.6px;
+            background: rgba(255, 42, 31, 0.3);
+            filter: blur(100px);
+            transform: rotate(10.24deg);
+            top: 73px;
+            left: 234px;
+        }
+    }
+    &__title {
+        margin-bottom: 126px;
+        text-align: center;
+    }
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        &:not(:last-child){
+            margin-bottom: 44px;
+        }
+    }
+}
+.block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #F8F9FC;
+    border-radius: 40px;
+    padding: 0 27px 30px;
+    min-height: 100%;
+    &__img {
+        margin-top: -86px;
+    }
+    &__title {
+        margin-top: 38px;
+        margin-bottom: 32px;
+        flex: 1 1 auto;
+    }
+    &__items {
+        display: flex;
+        flex-direction: column;
+    }
+    &__price {
+        @include fonts(32px, 800);
+        line-height: 119%;
+        margin-bottom: 8px;
+        color:$bg;
+        display: flex;
+        align-items: baseline;
+    }
+    &__price p{
+        font-size: 20px;
+        margin-right: 5px;
+    }
+    &__term {
+        @include fonts(32px, 800);
+        line-height: 119%;
+        color: $bg3;
+        display: flex;
+        align-items: baseline;
+    }
+    &__term p{
+        font-size: 20px;
+        margin-left: 5px;
+    }
+}
+.info {
+    display: flex;
+    padding: 36.5px 32px;
+    width: 394px;
+    &:nth-of-type(2){
+        padding: 36.5px 0;
+    }
+    &:nth-of-type(3){
+        padding: 36.5px 10px 36.5px 32px;
+    }
+    &__img {
+        margin-right: 16px;
+    }
+    &__items {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        margin-bottom: 8px;
+    }
+    &__text {
+        @include fonts(32px, 800);
+        line-height: 119%;
+        color: $bg;
+        display: flex;
+        align-items: baseline;
+    }
+    &__text p {
+        font-size: 20px;
+        margin: 0 5px;
+    }
+}
+
+// section Servises----------------------------------------------------------------------------------------
+
+.servises {
+    background: #F8F9FC;
+    &__body {
+        padding-top: 80px;
+    }
+    &__title {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    &__slider {
+        display: flex;
+        padding-bottom: 80px;
+    }
+    &__slide {
+        display: flex;
+        flex-direction: column;
+        min-height: 322px;
+        background: #FFFFFF;
+        border-radius: 40px;
+        &:not(:last-child){
+            margin-right: 24px;
+        }
+    }
+}
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+.swiper-wrapper {
+    display: flex;
+}
+.slide {
+    padding: 32px;
+    &__icon {
+        display: inline-block;
+        background: $bg ;
+        width: 48px;
+        height: 48px;
+        margin-bottom: 56px;
+        border-radius: 50%;
+        padding: 12px;
+    }
+    &__text {
+        color: #4A608E;
+    }
+}
+.swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+    bottom: 25px;
+}
+.swiper-pagination-bullet {
+    width: 15px;
+    height: 15px;
+    background: #F8F9FC;
+    border: 1px solid $bg3;
+    border-radius: 50%;
+    opacity: 1;
+    &:not(:last-child) {
+        margin-right: 20px;
+    }
+}
+.swiper-pagination-bullet-active {
+    background: $bg3;
+}
+.swiper-scrollbar {
+    display: none;
+}
+// section Contacts ---------------------------------------------------------------------------------------
+.contacts {
+    position: relative;
+    &__body {
+        padding: 80px 0;
+        display: flex;
+    }
+    &__content {
+        flex: 0 0 50%;
+        padding: 25px 88px 0 0;
+    }
+    &__block {
+        display: flex;
+        flex-direction: column;
+    }
+    &__title {
+        margin-bottom: 16px;
+        position: relative;
+        &::before{
+            content: '';
+            position: absolute;
+            width: 436.21px;
+            height: 49.48px;
+            background: rgba(255, 42, 31, 0.3);
+            filter: blur(100px);
+            transform: rotate(10.24deg);
+        }
+    }
+    &__sub-title {
+        margin-bottom: 48px;
+        width: 471px;
+    }
+    &__image {
+        position: absolute;
+        top: 80px;
+        right: 0;
+    }
+    &__photo {
+        border-radius: 50px 0px 0px 50px;
+    }
+    &__block-message {
+        position: fixed;
+        overflow: auto;
+        top: 24px;
+        right: -100%;
+        cursor: pointer;
+     }
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    &__top-block {
+        display: flex;
+    }
+    &__name {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        margin-bottom: 24px;
+        &:not(:last-child){
+            padding-right: 32px;
+        }
+    }
+    &__bottom-block{
+        margin-bottom: 32px;
+        display: flex;
+        flex-direction: column;
+    }
+    &__label {
+        @include fonts(14px,500);
+        line-height: 143%;
+        color: #253A71;
+        margin-bottom: 6px;
+    }
+    &__input {
+        flex: 1 1 auto;
+        min-height: 44px;
+        max-height: 45px;
+        padding: 8px 14px;
+        color: rgba(74, 96, 142, 0.8);
+        background: #FFFFFF;
+        border: 1px solid #D0D5DD;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    &__input-message{
+        max-height: max-content;
+    }
+    &__label{
+        &:nth-of-type(n+2){
+                margin-top: 20px;
+            }
+    }
+    &__btn {
+        display: flex;
+        background: $bg3;
+        box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+        border-radius: 100px;
+        min-height: 48px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #FFFFFF;
+        padding: 0 20px;
+        transition: all 0.3s ease;
+        &:hover{
+            background: $bg2;
+        }
+    }
+        &__error-message{
+            display: none;
+        }
+        &__error-message.active{
+            display: block;
+        }
+}
+.form__input.error {
+    box-shadow: 0 0 5px red;
+}
+.form__input-email.error {
+    box-shadow: 0 0 5px red;
+}
+.form .error-message {
+    position: relative;
+    &::after {
+        content: '!';
+        position: absolute;
+        display: block;
+        top: -30px;
+        right: 10px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50px;
+        text-align: center;
+        align-items: center;
+        border: 1.33333px solid #F04438;
+    }
+}
+.form .error-message_textarea{
+    &::after{
+        top: -138px;
+    }
+}
+
+// Footer ------------------------------------------------------------------------------------
+
+.footer {
+    &__body {
+        padding: 64px 0;
+        display: flex;
+        flex-direction: column;
+    }
+    &__logo {
+        color: $bg;
+        @include fonts(20px,700);
+        line-height: 120%;
+        margin-bottom: 48px;
+        text-align: center;
+    }
+    &__nav {
+        margin-bottom: 48px;
+        display: flex;
+        justify-content: center;
+    }
+    &__policy {
+        display: flex;
+        padding-top: 24px;
+        border-top: 1px solid #E5E5E5;
+        justify-content: center;
+        gap: 5px;
+        @include fonts(14px,400);
+        line-height: 121%;
+    }
+}
+
+
+@import "_responsive";
